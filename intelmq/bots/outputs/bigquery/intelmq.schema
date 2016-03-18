@@ -1,0 +1,139 @@
+[
+    {
+        "name": "classification",
+        "type": "RECORD",
+        "fields": [
+            {"name": "identifier", "type": "STRING"},
+            {"name": "taxonomy", "type": "STRING"},
+            {"name": "type", "type": "STRING"}
+        ]
+    },
+    {"name": "comment", "type": "STRING"},
+    {
+        "name": "destination",
+        "type": "RECORD",
+        "fields": [
+            {"name": "abuse_contact", "type": "STRING"},
+            {"name": "account", "type": "STRING"},
+            {"name": "allocated", "type": "TIMESTAMP"},
+            {"name": "as_name", "type": "STRING"},
+            {"name": "asn", "type": "INTEGER"},
+            {"name": "fqdn", "type": "STRING"},
+            {
+                "name": "geolocation",
+                "type": "RECORD",
+                "fields": [
+                    {"name": "cc", "type": "STRING"},
+                    {"name": "city", "type": "STRING"},
+                    {"name": "country", "type": "STRING"},
+                    {"name": "latitude", "type": "FLOAT"},
+                    {"name": "longitude", "type": "FLOAT"},
+                    {"name": "region", "type": "STRING"},
+                    {"name": "state", "type": "STRING"}
+                ]
+            },
+            {"name": "ip", "type": "STRING"},
+            {"name": "local_hostname", "type": "STRING"},
+            {"name": "local_ip", "type": "STRING"},
+            {"name": "network", "type": "STRING"},
+            {"name": "port", "type": "INTEGER"},
+            {"name": "registry", "type": "STRING"},
+            {"name": "reverse_dns", "type": "STRING"},
+            {"name": "tor_node", "type": "BOOLEAN"},
+            {"name": "url", "type": "STRING"}
+        ]
+    },
+    {
+        "name": "event_description",
+        "type": "RECORD",
+        "fields": [
+            {"name": "target", "type": "STRING"},
+            {"name": "text", "type": "STRING"},
+            {"name": "url", "type": "STRING"}
+        ]
+    },
+    {"name": "event_hash", "type": "STRING"},
+    {"name": "extra", "type": "STRING"},
+    {
+        "name": "feed",
+        "type": "RECORD",
+        "fields": [
+            {"name": "accuracy", "type": "FLOAT"},
+            {"name": "code", "type": "STRING"},
+            {"name": "name", "type": "STRING"},
+            {"name": "url", "type": "STRING"}
+        ]
+    },
+    {
+        "name": "malware",
+        "type": "RECORD",
+        "fields": [
+            {
+                "name": "hash",
+                "type": "RECORD",
+                "fields": [
+                    {"name": "value", "type": "STRING"},
+                    {"name": "md5", "type": "STRING"},
+                    {"name": "sha1", "type": "STRING"}
+                ]
+            },
+            {"name": "name", "type": "STRING"},
+            {"name": "version", "type": "STRING"}
+        ]
+    },
+    {"name": "misp_uuid", "type": "INTEGER"},
+    {
+        "name": "protocol",
+        "type": "RECORD",
+        "fields": [
+            {"name": "application", "type": "STRING"},
+            {"name": "transport", "type": "STRING"}
+        ]
+    },
+    {"name": "raw", "type": "STRING"},
+    {"name": "rtir_id", "type": "INTEGER"},
+    {"name": "screenshot_url", "type": "STRING"},
+    {
+        "name": "source",
+        "type": "RECORD",
+        "fields": [
+            {"name": "abuse_contact", "type": "STRING"},
+            {"name": "account", "type": "STRING"},
+            {"name": "allocated", "type": "TIMESTAMP"},
+            {"name": "as_name", "type": "STRING"},
+            {"name": "asn", "type": "INTEGER"},
+            {"name": "fqdn", "type": "STRING"},
+            {
+                "name": "geolocation",
+                "type": "RECORD",
+                "fields": [
+                    {"name": "cc", "type": "STRING"},
+                    {"name": "city", "type": "STRING"},
+                    {"name": "country", "type": "STRING"},
+                    {"name": "latitude", "type": "FLOAT"},
+                    {"name": "longitude", "type": "FLOAT"},
+                    {"name": "region", "type": "STRING"},
+                    {"name": "state", "type": "STRING"}
+                ]
+            },
+            {"name": "ip", "type": "STRING"},
+            {"name": "local_hostname", "type": "STRING"},
+            {"name": "local_ip", "type": "STRING"},
+            {"name": "network", "type": "STRING"},
+            {"name": "port", "type": "INTEGER"},
+            {"name": "registry", "type": "STRING"},
+            {"name": "reverse_dns", "type": "STRING"},
+            {"name": "tor_node", "type": "BOOLEAN"},
+            {"name": "url", "type": "STRING"}
+        ]
+    },
+    {"name": "status", "type": "STRING"},
+    {
+        "name": "time",
+        "type": "RECORD",
+        "fields": [
+            {"name": "observation", "type": "TIMESTAMP"},
+            {"name": "source", "type": "TIMESTAMP"}
+        ]
+    }
+]

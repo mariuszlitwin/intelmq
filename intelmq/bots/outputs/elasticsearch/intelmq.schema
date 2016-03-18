@@ -1,0 +1,181 @@
+{
+    "settings": {
+        "analysis": {
+            "filter": {
+                "capture_domain_filter": {
+                    "type": "pattern_capture",
+                    "preserve_original": false,
+                    "flags": "CASE_INSENSITIVE",
+                    "patterns": [
+                        "https?:\/\/([^/]+)"
+                    ]
+                }
+            },
+            "analyzer": {
+                "domain_analyzer": {
+                    "type": "custom",
+                    "tokenizer": "keyword",
+                    "filter": [
+                        "capture_domain_filter"
+                    ]
+                }
+            }
+        }
+    },
+    "mappings": {
+        "event": {
+            "properties": {
+                "feed": {
+                    "properties": {
+                        "accuracy": {"type": "float"},
+                        "code": {"type": "string", "index": "not_analyzed"},
+                        "name": {"type": "string", "index": "not_analyzed"},
+                        "url": {"type": "string", "index": "not_analyzed"}
+                    }
+                },
+                "time": {
+                    "properties": {
+                        "observation": {"type": "date"},
+                        "source": {"type": "date"}
+                    }
+                },
+            
+                "event_description": {
+                    "properties": {
+                        "target": {"type": "string", "index": "not_analyzed"},
+                        "text": {"type": "string"},
+                        "url": {"type": "string", "index": "not_analyzed"}
+                    }
+                },
+                "comment": {"type": "string"},
+                
+                "status": {"type": "string", "index": "not_analyzed"},
+                
+                "protocol": {
+                    "properties": {
+                        "application": {"type": "string", "index": "not_analyzed"},
+                        "transport": {"type": "string", "index": "not_analyzed"}
+                    }
+                },
+                
+                "classification": {
+                    "properties": {
+                        "identifier": {"type": "string", "index": "not_analyzed"},
+                        "taxonomy": {"type": "string", "index": "not_analyzed"},
+                        "type": {"type": "string", "index": "not_analyzed"}
+                    }
+                },
+                "source": {
+                    "properties": {
+                        "abuse_contact": {"type": "string", "index": "not_analyzed"},
+                        "account": {"type": "string", "index": "not_analyzed"},
+                        "allocated": {"type": "date"},
+                        "as_name": {"type": "string", "index": "not_analyzed"},
+                        "asn": {"type": "string", "index": "not_analyzed"},
+                        "fqdn": {"type": "string", "analyzer": "domain_analyzer"},
+                        "geolocation": {
+                            "properties": {
+                                "cc": {"type": "string", "index": "not_analyzed"},
+                                "city": {"type": "string", "index": "not_analyzed"},
+                                "country": {"type": "string", "index": "not_analyzed"},
+                                "latitude": {"type": "float"},
+                                "longitude": {"type": "float"},
+                                "location": {"type": "geo_point"},
+                                "region": {"type": "string", "index": "not_analyzed"},
+                                "state": {"type": "string", "index": "not_analyzed"}
+                            }
+                        },
+                        "ip": {"type": "ip"},
+                        "local_hostname": {"type": "string", "analyzer": "domain_analyzer"},
+                        "local_ip": {"type": "ip"},
+                        "network": {"type": "string", "index": "not_analyzed"},
+                        "port": {"type": "string", "index": "not_analyzed"},
+                        "registry": {"type": "string"},
+                        "reverse_dns": {"type": "string", "analyzer": "domain_analyzer"},
+                        "tor_node": {"type": "boolean"},
+                        "url": {
+                            "type": "string", 
+                            "analyzer": "domain_analyzer",
+                            "fields": {
+                                        "raw": { 
+                                            "type":  "string",
+                                            "index": "not_analyzed"
+                                        }
+                            }
+                        }
+                    }
+                },
+                "destination": {
+                    "properties": {
+                        "abuse_contact": {"type": "string", "index": "not_analyzed"},
+                        "account": {"type": "string", "index": "not_analyzed"},
+                        "allocated": {"type": "date"},
+                        "as_name": {"type": "string", "index": "not_analyzed"},
+                        "asn": {"type": "string", "index": "not_analyzed"},
+                        "fqdn": {"type": "string", "analyzer": "domain_analyzer"},
+                        "geolocation": {
+                            "properties": {
+                                "cc": {"type": "string", "index": "not_analyzed"},
+                                "city": {"type": "string", "index": "not_analyzed"},
+                                "country": {"type": "string", "index": "not_analyzed"},
+                                "latitude": {"type": "float"},
+                                "longitude": {"type": "float"},
+                                "location": {"type": "geo_point"},
+                                "region": {"type": "string", "index": "not_analyzed"},
+                                "state": {"type": "string", "index": "not_analyzed"}
+                            }
+                        },
+                        "ip": {"type": "ip"},
+                        "local_hostname": {"type": "string", "analyzer": "domain_analyzer"},
+                        "local_ip": {"type": "ip"},
+                        "network": {"type": "string", "index": "not_analyzed"},
+                        "port": {"type": "string", "index": "not_analyzed"},
+                        "registry": {"type": "string"},
+                        "reverse_dns": {"type": "string", "analyzer": "domain_analyzer"},
+                        "tor_node": {"type": "boolean"},
+                        "url": {
+                            "type": "string", 
+                            "analyzer": "domain_analyzer",
+                            "fields": {
+                                        "raw": { 
+                                            "type":  "string",
+                                            "index": "not_analyzed"
+                                        }
+                            }
+                        }
+                    }
+                },
+
+                "malware": {
+                    "properties": {
+                        "name": {"type": "string"},
+                        "version": {"type": "string"},
+                        "hash": {
+                            "properties": {
+                                "sha1": {"type": "string", "index": "not_analyzed"},
+                                "md5": {"type": "string", "index": "not_analyzed"}
+                            }
+                        }
+                    }
+                },
+                
+                "misp_uuid": {"type": "string", "index": "not_analyzed"},
+                "rtir_id": {"type": "string", "index": "not_analyzed"},
+                
+                "screenshot_url": {
+                    "type": "string", 
+                    "analyzer": "domain_analyzer",
+                    "fields": {
+                                "raw": { 
+                                    "type":  "string",
+                                    "index": "not_analyzed"
+                                }
+                    }
+                },
+                
+                "event_hash": {"type": "string", "index": "not_analyzed"},
+                "raw": {"type": "string", "index": "not_analyzed"}
+            }
+        }
+    }
+}
