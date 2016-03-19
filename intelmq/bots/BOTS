@@ -711,6 +711,26 @@
         }
     },
     "Output": {
+        "BigQuery": {
+            "description": "BigQuery is the bot responsible to send events to a Google BigQuery storage.",
+            "module": "intelmq.bots.outputs.bigquery.output",
+            "parameters": {
+                "chunk_size": "50",
+                "dataset": "<dataset>",
+                "dump_file": "/opt/intelmq/var/log/bigquery-output-failed.json",
+                "project_id": "<project_id>",
+                "table": "<table>"
+            }
+        },
+        "ElasticSearch": {
+            "description": "ElasticSearch is bot resposible to send events to ElasticSearch cluster",
+            "module": "intelmq.bots.outputs.elasticsearch.output",
+            "parameters": {
+                "host": "localhost",
+                "index": "intelmq",
+                "port": "9200"
+            }
+        },
         "File": {
             "description": "File is the bot responsible to send events to a file.",
             "module": "intelmq.bots.outputs.file.output",
@@ -778,26 +798,6 @@
                 "xmpp_to_server": "destination server",
                 "xmpp_to_user": "destination username",
                 "xmpp_user": "xmpp username"
-            }
-        },
-        "BigQuery": {
-            "description": "BigQuery is the bot responsible to send events to a Google BigQuery storage.",
-            "module": "intelmq.bots.outputs.bigquery.output",
-            "parameters": {
-                "project_id": "<project_id>",
-                "dataset": "<dataset>",
-                "table": "<table>",
-                "chunk_size": "50",
-                "dump_file": "/opt/intelmq/var/log/bigquery-output-failed.json"
-            }
-        },
-        "ElasticSearch": {
-            "description": "ElasticSearch is bot resposible to send events to ElasticSearch cluster",
-            "module": "intelmq.bots.outputs.elasticsearch.output",
-            "parameters": {
-                "host": "localhost",
-                "port": "9200",
-                "index": "intelmq"
             }
         }
     },
@@ -1111,3 +1111,4 @@
         }
     }
 }
+
